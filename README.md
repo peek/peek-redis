@@ -1,6 +1,11 @@
 # Glimpse::Redis
 
-TODO: Write a gem description
+Provide a glimpse into the Redis calls made within your Rails application.
+
+Things this glimpse view provides:
+
+- Total number of Redis commands called during the request
+- The duration of the calls made during the request
 
 ## Installation
 
@@ -18,7 +23,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Add the following to your `config/initializers/glimpse.rb`: 
+
+```ruby
+Glimpse.into Glimpse::Views::Redis
+```
 
 ## Contributing
 
