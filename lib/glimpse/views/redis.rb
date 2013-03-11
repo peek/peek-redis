@@ -8,9 +8,9 @@ class Redis::Client
   self.query_count = 0
   self.query_time = 0
 
-  def call_with_timing(*args)
+  def call_with_timing(*args, &block)
     start = Time.now
-    call_without_timing(*args)
+    call_without_timing(*args, &block)
   ensure
     Redis::Client.query_time += (Time.now - start)
     Redis::Client.query_count += 1
