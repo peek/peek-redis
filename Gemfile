@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in glimpse-redis.gemspec
+# Specify your gem's dependencies in peek-redis.gemspec
 gemspec

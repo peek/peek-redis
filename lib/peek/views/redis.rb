@@ -20,7 +20,7 @@ class Redis::Client
   alias_method_chain :call, :timing
 end
 
-module Glimpse
+module Peek
   module Views
     class Redis < View
       def duration

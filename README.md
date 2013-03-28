@@ -1,8 +1,8 @@
-# Glimpse::Redis
+# Peek::Redis
 
-Provide a glimpse into the Redis calls made within your Rails application.
+Take a peek into the Redis calls made within your Rails application.
 
-Things this glimpse view provides:
+Things this peek view provides:
 
 - Total number of Redis commands called during the request
 - The duration of the calls made during the request
@@ -11,7 +11,7 @@ Things this glimpse view provides:
 
 Add this line to your application's Gemfile:
 
-    gem 'glimpse-redis'
+    gem 'peek-redis'
 
 And then execute:
 
@@ -19,14 +19,14 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install glimpse-redis
+    $ gem install peek-redis
 
 ## Usage
 
-Add the following to your `config/initializers/glimpse.rb`: 
+Add the following to your `config/initializers/peek.rb`: 
 
 ```ruby
-Glimpse.into Glimpse::Views::Redis
+Peek.into Peek::Views::Redis
 ```
 
 ## Contributing

@@ -1,4 +1,4 @@
-module Glimpse
+module Peek
   module Redis
     class Railtie < ::Rails::Engine
     end
