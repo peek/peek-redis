@@ -2,22 +2,27 @@ require 'redis'
 require 'atomic'
 
 # Instrument Redis time
+module Peek
+  module RedisInstrumented
+    def call(*args, &block)
+      start = Time.now
+      super(*args, &block)
+    ensure
+      duration = (Time.now - start)
+      ::Redis::Client.query_time.update { |value| value + duration }
+      ::Redis::Client.query_count.update { |value| value + 1 }
+    end
+  end
+end
+
+
 class Redis::Client
+  prepend Peek::RedisInstrumented
   class << self
     attr_accessor :query_time, :query_count
   end
   self.query_count = Atomic.new(0)
   self.query_time = Atomic.new(0)
-
-  def call_with_timing(*args, &block)
-    start = Time.now
-    call_without_timing(*args, &block)
-  ensure
-    duration = (Time.now - start)
-    Redis::Client.query_time.update { |value| value + duration }
-    Redis::Client.query_count.update { |value| value + 1 }
-  end
-  alias_method_chain :call, :timing
 end
 
 module Peek
